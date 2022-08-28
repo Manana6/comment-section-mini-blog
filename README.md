@@ -1,5 +1,3 @@
-#Practical React.js Assignment
-
 # Library for App UI
 Reactjs
 
