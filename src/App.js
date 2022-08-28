@@ -71,7 +71,7 @@ const App = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        fontSize: 'calc(10px + 2vmin)',
+        fontSize: '22px',
         padding: '30px',
         alignItems: 'flex-start',
         margin: '0',
