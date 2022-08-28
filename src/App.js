@@ -1,48 +1,120 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react'
 
 import {
   Button,
+  Container,
   FormControl,
 } from 'react-bootstrap';
 
+import Comment from './Comment';
+
 const App = () => {
 
+  const [
+    state,
+    setState,
+  ] = React.useState({
+    value: '',
+    commentList: [
+      'Hi, my name is Thato Sithole and I am a Software Engineer.',
+    ],
+  });
+
+  const onChangeComment = value => {
+
+    setState(prevState => ({
+      ...prevState,
+      value: value,
+    }));
+  };
+
+  //Add a new comment
+  const onAddNewComment = () => {
+
+    const newList = [...state.commentList];
+
+    newList.push(state.value);
+
+    setState(prevState => ({
+      ...prevState,
+      commentList: newList,
+    }));
+  };
+
+  const renderComments = () => {
+
+    const comments = [];
+
+    for (let index = 0; index < state.commentList.length; index++) {
+
+      comments.push(
+        <Comment
+          index={index}
+          value={state.commentList[index]}/>
+      );
+    }
+    return comments;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header" 
+
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        fontSize: 'calc(10px + 2vmin)',
+        padding: '30px',
+        alignItems: 'flex-start',
+        margin: '0',
+        background: '#282c34',
+        minHeight: '100vh',
+        color: 'gray',
+      }}>
+
+      <h1
         style={{
-          padding: '30px',
-          alignItems: 'flex-start'
+          color: 'violet'
         }}>
 
-        <section
-          id='comments-list'
-          style={{
-            height: 'auto',
-          }}>
+          Your comments
+      </h1>
 
-        </section>
+      <Container
+        style={{
+          padding: '10px',
+          height: 'auto',
+          maxHeight: '300px',
+          maxWidth: '100%',
+          overflowY: 'scroll',
+          margin: '0 0 30px'
+        }}>
 
-        <h1
-          style={{
-            color: 'violet'
-          }}>
+        { renderComments() }
 
-            Create a comment
-        </h1>
-        <FormControl
-          as ='textarea'/>
+      </Container>
 
-        <Button
-          style={{
-            margin: '20px 0 0'
-          }}>
+      <h1
+        style={{
+          color: 'violet'
+        }}>
 
-          Submit
-        </Button>
-      </header>
+          Create a comment
+      </h1>
+
+      <FormControl
+        as ='textarea'
+        onChange={event => onChangeComment(event.target.value)}
+        value={state.value}/>
+
+      <Button
+        style={{
+          margin: '20px 0 0'
+        }}
+        onClick={onAddNewComment}>
+
+        Submit
+      </Button>        
     </div>
   );
 }
