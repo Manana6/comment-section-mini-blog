@@ -1,5 +1,4 @@
-# iqbusiness-practical
-Practical React.js Assignment
+#Practical React.js Assignment
 
 # Library for App UI
 Reactjs
