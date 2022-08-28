@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import {
   Button,
@@ -20,6 +20,9 @@ const App = () => {
     ],
   });
 
+  /**
+   * function for handling the value of the comment as it changes
+   * */
   const onChangeComment = value => {
 
     setState(prevState => ({
@@ -28,7 +31,9 @@ const App = () => {
     }));
   };
 
-  //Add a new comment
+  /**
+   * Add a new comment
+   * */
   const onAddNewComment = () => {
 
     const newList = [...state.commentList];
@@ -41,6 +46,9 @@ const App = () => {
     }));
   };
 
+  /**
+   * Add a new comment everytime I click 'Submit' and rerender the comment list
+   * */
   const renderComments = () => {
 
     const comments = [];
